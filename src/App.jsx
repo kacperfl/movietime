@@ -14,7 +14,7 @@ function App() {
     <Router>
       <div className="app-container">
         <header className="header">
-          <nav className="navbar">
+          <div className="navbar">
             <div className="hamburger-menu" onClick={toggleMenu}>
               <i className="fas fa-bars"></i>
             </div>
@@ -50,15 +50,15 @@ function App() {
               />
               <button type="submit">Zoek</button>
             </div>
-          </nav>
-          <div className="header-content">
-            <h1>Welkom bij de Bioscoop</h1>
-            <p>Ontdek de nieuwste films en reserveer je tickets online!</p>
           </div>
         </header>
         <main>
+        <div className="header-content">
+            <h1>Welkom bij de Bioscoop</h1>
+            <p>Ontdek de nieuwste films en reserveer je tickets online!</p>
+          </div>
           <Routes>
-            <Route path="/" element={<div>Home Page Content</div>} />
+            {/* <Route path="/" element={<div>Home Page Content</div>} /> */}
             <Route path="/vestigingen" element={<Vestigingen />} />
           </Routes>
         </main>

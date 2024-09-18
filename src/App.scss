@@ -23,10 +23,11 @@ html, body {
 
 .header {
   width: 100%;
-  padding: 20px;
-  background-color: #151523;
+  padding: 10px; /* Verminder padding voor mobiele schermen */
+  background-color: #ffffff;
   border-bottom: 2px solid #e50914; 
   position: relative;
+  z-index: 1000; /* Zorg ervoor dat de header boven andere elementen staat */
 }
 
 .navbar {
@@ -45,7 +46,7 @@ html, body {
 
 .nav-item {
   position: relative;
-  margin: 0 15px;
+  margin: 0 10px; /* Verminder margin voor mobiele schermen */
   cursor: pointer;
 }
 
@@ -97,16 +98,16 @@ html, body {
 
 .header-content {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px; /* Verminder margin-top voor mobiele schermen */
 }
 
 .header-content h1 {
-  font-size: 3rem;
+  font-size: 2.5rem; /* Verminder fontgrootte voor mobiele schermen */
   margin-bottom: 10px;
 }
 
 .header-content p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .hamburger-menu {
@@ -137,7 +138,7 @@ html, body {
   }
 
   .search-bar {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     justify-content: space-between;
   }
@@ -153,11 +154,11 @@ html, body {
   }
 
   .header-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .header-content p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .hamburger-menu {
@@ -167,11 +168,11 @@ html, body {
 
 @media (max-width: 480px) {
   .header-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .header-content p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .search-bar input, .search-bar button {
@@ -182,11 +183,11 @@ html, body {
 
 @media (max-width: 270px) {
   .header-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .header-content p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .search-bar input {
