@@ -44,7 +44,7 @@ function App() {
             </ul>
             <div className="search-bar">
               <input
-                type="text"
+                type="autocomplete"
                 placeholder="Zoek een film..."
                 aria-label="Zoek een film"
               />
@@ -53,10 +53,10 @@ function App() {
           </div>
         </header>
         <main>
-        <div className="header-content">
+        {/* <div className="header-content">
             <h1>Welkom bij de Bioscoop</h1>
             <p>Ontdek de nieuwste films en reserveer je tickets online!</p>
-          </div>
+          </div> */}
           <Routes>
             {/* <Route path="/" element={<div>Home Page Content</div>} /> */}
             <Route path="/vestigingen" element={<Vestigingen />} />

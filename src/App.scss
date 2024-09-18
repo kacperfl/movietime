@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; 
-}
+// html, body {
+//   height: 100%;
+//   width: 100%;
+//   margin: 0;
+//   padding: 0;
+//   overflow-x: hidden; 
+// }
 
 .app-container {
   min-height: 100vh;
@@ -24,7 +24,7 @@ html, body {
 .header {
   width: 100%;
   padding: 10px; /* Verminder padding voor mobiele schermen */
-  background-color: #ffffff;
+  background-color: #10101d;
   border-bottom: 2px solid #e50914; 
   position: relative;
   z-index: 1000; /* Zorg ervoor dat de header boven andere elementen staat */
@@ -76,7 +76,7 @@ html, body {
 }
 
 .search-bar input {
-  padding: 8px;
+  padding: 0.8rem;
   width: 200px;
   border: none;
   border-radius: 4px;
