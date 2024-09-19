@@ -1,0 +1,85 @@
+.recensie-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+.film-posters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 60%;
+}
+
+.film-poster {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.film-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.review-section {
+  width: 40%;
+  background-color: #1e1e2f;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.star-rating {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.star {
+  color: #ccc;
+  margin-right: 5px;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.recensies-overview {
+  margin-top: 10px;
+}
+
+.recensie-item {
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  max-height: 100px;
+}
+
+@media (max-width: 768px) {
+  .film-posters {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .recensie-container {
+    flex-direction: column;
+  }
+
+  .review-section {
+    width: 100%;
+  }
+
+  .film-poster img {
+    width: 100%;
+    height: 100%;
+    margin-left: 60%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+}

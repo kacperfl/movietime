@@ -1,5 +1,6 @@
-import './vestigingen.scss'; 
+import './styling/vestigingen.scss'; 
 
+// een lijst met aantal verzonnen bioscoop informatie 
 function Vestigingen() {
   const vestigingen = [
     {
@@ -36,6 +37,7 @@ function Vestigingen() {
       naam: "Bioscoop Groningen",
       adres: "Grote Markt 30, 9711 LP Groningen",
       telefoon: "050 887 7766",
+      
       email: "groningen@bioscoop.nl",
     }
   ];
@@ -43,8 +45,10 @@ function Vestigingen() {
   return (
     <div className="vestigingen-container">
       <h1>Onze Vestigingen</h1>
+
       <div className="vestigingen-grid">
         {vestigingen.map((vestiging, index) => (
+
           <div key={index} className="vestiging-card">
             <h2>{vestiging.naam}</h2>
             <p>{vestiging.adres}</p>
