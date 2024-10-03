@@ -8,8 +8,8 @@
 .film-posters {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  width: 60%;
+  // 6. Kleinere fotos die op de pagina worden getoont
+  width: 50%;
 }
 
 .film-poster {
@@ -21,8 +21,9 @@
 }
 
 .film-poster img {
-  width: 100%;
-  height: 100%;
+  // 6. Kleinere fotos die op de pagina worden getoont
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   border-radius: 1rem;
 }
