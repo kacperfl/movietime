@@ -13,7 +13,7 @@ function App() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-<Link to="/">Home</Link>
+  <Link to="/">Home</Link>
   return (
     <Router>
       <div className="app-container">
@@ -23,13 +23,13 @@ function App() {
               <i className="fas fa-bars"></i>
             </div>
             <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-            <li className="nav-item">
-            <Link to="/">Home</Link>
-            </li>
+              <li className="nav-item">
+                <Link to="/">Home</Link>
+              </li>
               <li className="nav-item">
                 <Link to="/recensies">Film recensie</Link>
                 <ul className="dropdown-menu">
-                  
+
                 </ul>
               </li>
               <li className="nav-item">
@@ -40,27 +40,41 @@ function App() {
                 </ul>
               </li>
               <li className="nav-item">
-              <Link className="nav-text"to="/vestigingen">Vestigingen</Link>
-                
+                <Link className="nav-text" to="/vestigingen">Vestigingen</Link>
+
               </li>
             </ul>
 
-            
+
             <div className="search-bar">
               <input
-                type="autocomplete"
+                list="film-titles"
+                type="text"
                 placeholder="Zoek een film..."
                 aria-label="Zoek een film"
               />
+              <datalist id="film-titles">
+                <option value="Atlas" />
+                <option value="Joker Folie Deux" />
+                <option value="Planet of the Apes" />
+                <option value="Oppenheimer" />
+                <option value="Dune" />
+                <option value="The Novince" />
+                <option value="Blue Beetle" />
+                <option value="The Batman" />
+                <option value="Bad Boys" />
+                <option value="Black Adam" />
+              </datalist>
               <button type="submit">Zoek</button>
             </div>
+
           </div>
         </header>
         <main>
-        
+
           <Routes>
             <Route path="/vestigingen" element={<Vestigingen />} />
-            <Route path="/recensies" element={<FilmRecensie/>} />
+            <Route path="/recensies" element={<FilmRecensie />} />
           </Routes>
         </main>
       </div>

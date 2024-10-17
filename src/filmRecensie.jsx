@@ -14,7 +14,7 @@ const Recensie = () => {
   // 3. de foto formaat is geoptimaliseerd
   const defaultFilms = [
     { id: 1, foto: 'src/photos/ATLAS-KEYART.jpg', title: 'Atlas' },
-    // { id: 2, foto: 'src/photos/JokerFolieC3A0Deux_133650099276711151_big.jpg', title: 'JokerFolie' },
+    { id: 2, foto: 'src/photos/JokerFolieC3A0Deux_133650099276711151_big.jpg', title: 'Joker Folie Deux' },
     { id: 3, foto: 'src/photos/398055860_688837486526142_8475637847272940667_n-820x1024.jpg', title: 'Planet of the Apes' },
     { id: 4, foto: 'src/photos/fpMYRZpRpyDqXhvTPIz9O4ApXsqHGj3ssMxatQH5-810x1200.jpg', title: 'Oppenheimer' },
     { id: 5, foto: 'src/photos/MV5BMDQ0NjgyN2YtNWViNS00YjA3LTkxNDktYzFkZTExZGMxZDkxXkEyXkFqcGdeQXVyODE5NzE3OTE._V1_.jpg', title: 'Dune' },
@@ -60,7 +60,7 @@ const Recensie = () => {
     setRecensies(updatedRecensies);
     localStorage.setItem('recensies', JSON.stringify(updatedRecensies));
 
-    if (updatedRecensies.length === 2) {
+    if (updatedRecensies.length === 3) {
       alert('Bedankt voor jou reviews als een bedankje: 10% korting! gebruik de code: SuperUser1010');
     }
 
