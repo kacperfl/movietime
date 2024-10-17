@@ -1,34 +1,58 @@
+// Variabelen
 $bg-color: #1e1e2f;
 $card-bg-color: #252540;
 $primary-color: #e50914;
 $text-color: white;
 $shadow-color: rgba(0, 0, 0, 0.2);
+$small-padding: 10px;
+$large-padding: 20px;
+$font-small: 1rem;
+$font-large: 2rem;
 
-.vestigingen-container {
-  padding: 20px; 
-  text-align: center;
-  background-color: $bg-color;
-  color: $text-color;
-  overflow-x: hidden; 
-
-  h1 {
-    font-size: 2rem; 
-    margin-bottom: 1rem;
+// Mixin voor media queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $breakpoint == mobile {
+    @media (max-width: 480px) { @content; }
+  }
+  @else if $breakpoint == small-mobile {
+    @media (max-width: 270px) { @content; }
   }
 }
 
+// Functie om kleur lichter te maken
+@function lighten-color($color, $percent) {
+  @return lighten($color, $percent);
+}
+
+// Vestigingen-container met nesting
+.vestigingen-container {
+  padding: $large-padding; 
+  text-align: center;
+  background-color: $bg-color;
+  color: $text-color;
+  overflow-x: hidden;
+
+  h1 {
+    font-size: $font-large;
+    margin-bottom: $small-padding;
+  }
+}
+
+// Vestigingen-grid met operators
 .vestigingen-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-  overflow: hidden;
+  gap: $small-padding * 2; 
+  margin-top: $small-padding * 2;
 }
 
 .vestiging-card {
-  margin-top: 1rem;
+  margin-top: $small-padding;
   background-color: $card-bg-color;
-  padding: 20px;
+  padding: $large-padding;
   border-radius: 8px;
   box-shadow: 0 2px 10px $shadow-color;
   transition: transform 0.3s ease;
@@ -36,11 +60,12 @@ $shadow-color: rgba(0, 0, 0, 0.2);
 
   &:hover {
     transform: translateY(-10px);
+    background-color: lighten-color($card-bg-color, 10%); 
   }
 
   h2 {
     color: $primary-color;
-    margin-bottom: 10px;
+    margin-bottom: $small-padding;
   }
 
   p {
@@ -57,32 +82,33 @@ $shadow-color: rgba(0, 0, 0, 0.2);
   }
 }
 
-@media (max-width: 768px) {
+// Media queries met mixins
+@include respond-to(tablet) {
   .vestigingen-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .vestigingen-container h1 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
+@include respond-to(mobile) {
   .vestigingen-grid {
     grid-template-columns: 1fr;
   }
 
   .vestigingen-container {
-    padding: 10px; 
+    padding: $small-padding;
   }
 
   h1 {
-    font-size: 1.2rem; 
+    font-size: $font-small;
   }
 }
 
-@media (max-width: 270px) {
+@include respond-to(small-mobile) {
   .vestigingen-container h1 {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 }

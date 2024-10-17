@@ -1,3 +1,34 @@
+// Variabelen
+$app-bg-color: #1e1e2f;
+$header-bg-color: #10101d;
+$primary-color: #e50914;
+$hover-bg-color: #182448;
+$dropdown-bg-color: #252540;
+$text-color: white;
+$padding-small: 10px;
+$padding-large: 20px;
+$font-large: 2.5rem;
+$font-small: 1.2rem;
+
+// Functie om kleur donkerder te maken
+@function darken-color($color, $percent) {
+  @return darken($color, $percent);
+}
+
+// Mixin voor media queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $breakpoint == mobile {
+    @media (max-width: 480px) { @content; }
+  }
+  @else if $breakpoint == small-mobile {
+    @media (max-width: 270px) { @content; }
+  }
+}
+
+// Algemene stijlen
 * {
   margin: 0;
   padding: 0;
@@ -5,175 +36,131 @@
 }
 
 body {
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-$app-bg-color: #1e1e2f;
-$header-bg-color: #10101d;
-$primary-color: #e50914;
-$hover-bg-color: #182448;
-$dropdown-bg-color: #252540;
-$text-color: white;
-
+// App-container met variabelen en nesting
 .app-container {
   min-height: 100vh;
-  width: 100vw; 
+  width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: $app-bg-color;
   color: $text-color;
-}
 
-.header {
-  width: 100%;
-  padding: 10px; 
-  background-color: $header-bg-color;
-  border-bottom: 2px solid $primary-color; 
-  position: relative;
-  z-index: 1000; 
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.nav-item {
-  position: relative;
-  margin: 0 10px; 
-  cursor: pointer;
-  padding: 10px 20px; 
-  border-radius: 4px; 
-  transition: background-color 0.3s; 
-
-  &:hover {
-    background-color: $hover-bg-color; 
-  }
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-
-  a {
-    color: $text-color; 
-    text-decoration: none; 
-    display: block; 
-    width: 100%; 
-    height: 100%; 
-
-    &:hover {
-      color: $text-color; 
-    }
-  }
-}
-
-.nav-text {
-  width: 100%;
-  height: 100%;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: $dropdown-bg-color;
-  padding: 10px;
-  list-style: none;
-  border-radius: 5px;
-
-  li {
-    padding: 5px 0;
-  }
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-
-  input {
-    padding: 0.8rem;
-    width: 200px;
-    border: none;
-    border-radius: 4px;
-    margin-right: 2rem;
-  }
-
-  button {
-    padding: 8px 16px;
-    background-color: $primary-color;
-    color: $text-color;
-    border: none;
-    border-radius: 4px;
-    margin-right: 1rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($primary-color, 5%);
-    }
-  }
-}
-
-.header-content {
-  text-align: center;
-  margin-top: 20px; 
-
-  h1 {
-    font-size: 2.5rem; 
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: 1.2rem;
-  }
-}
-
-.hamburger-menu {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: $text-color;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
+  .header {
     width: 100%;
+    padding: $padding-small;
+    background-color: $header-bg-color;
+    border-bottom: 2px solid $primary-color;
+    position: relative;
+    z-index: 1000;
 
-    &.show {
+    .navbar {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+        // Zorg ervoor dat de items naast elkaar blijven staan
+        .nav-item {
+          margin: 0 $padding-small;
+          cursor: pointer;
+          padding: $padding-small $padding-large;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+          
+          &:hover {
+            background-color: $hover-bg-color;
+          }
+
+          a {
+            color: $text-color;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            &:hover {
+              color: $text-color;
+            }
+          }
+        }
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+
+        input {
+          padding: 0.8rem;
+          width: 200px;
+          border: none;
+          border-radius: 4px;
+          margin-right: 2rem;
+        }
+
+        button {
+          padding: 8px 16px;
+          background-color: $primary-color;
+          color: $text-color;
+          border: none;
+          border-radius: 4px;
+          margin-right: 1rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken-color($primary-color, 5%);
+          }
+        }
+      }
+
+      .hamburger-menu {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: $text-color;
+      }
+    }
+
+    .header-content {
+      text-align: center;
+      margin-top: $padding-large;
+
+      h1 {
+        font-size: $font-large;
+        margin-bottom: $padding-small;
+      }
+
+      p {
+        font-size: $font-small;
+      }
     }
   }
+}
 
-  .nav-item {
-    margin: 10px 0;
-  }
-
+// Media queries met mixins
+@include respond-to(tablet) {
   .search-bar {
-    margin-top: 10px;
+    margin-top: $padding-small;
     width: 100%;
     justify-content: space-between;
 
     input {
-      width: calc(100% - 100px); 
+      width: calc(100% - 100px);
       margin-right: 0;
     }
 
     button {
       width: 100px;
-      margin-top: 10px;
+      margin-top: $padding-small;
     }
   }
 
@@ -192,7 +179,35 @@ $text-color: white;
   }
 }
 
-@media (max-width: 480px) {
+@include respond-to(mobile) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+
+    .nav-links {
+      display: flex; 
+      flex-direction: row;
+      width: auto; 
+    }
+
+    .nav-item {
+      margin: $padding-small;
+    }
+  }
+
+  .search-bar {
+    input {
+      width: 100%;
+      margin-top: $padding-small;
+    }
+
+    button {
+      width: 40%;
+      margin-top: $padding-small;
+      margin-left: 5px;
+    }
+  }
+
   .header-content {
     h1 {
       font-size: 1.5rem;
@@ -202,22 +217,9 @@ $text-color: white;
       font-size: 0.9rem;
     }
   }
-
-  .search-bar {
-    input {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    button {
-      width: 40%;
-      margin-top: 10px;
-      margin-left: 5px;
-    }
-  }
 }
 
-@media (max-width: 270px) {
+@include respond-to(small-mobile) {
   .header-content {
     h1 {
       font-size: 1.2rem;

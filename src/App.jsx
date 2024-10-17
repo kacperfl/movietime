@@ -35,8 +35,6 @@ function App() {
               <li className="nav-item">
                 <Link to="/">Nieuwe Films</Link>
                 <ul className="dropdown-menu">
-                  <li>Deze week</li>
-                  <li>Volgende week</li>
                 </ul>
               </li>
               <li className="nav-item">
