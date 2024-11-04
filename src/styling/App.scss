@@ -1,34 +1,47 @@
-// Variabelen
-$app-bg-color: #1e1e2f;
-$header-bg-color: #10101d;
-$primary-color: #e50914;
-$hover-bg-color: #182448;
-$dropdown-bg-color: #252540;
-$text-color: white;
+// Kleuren
+$background-dark: #1e1e2f;
+$background-header: #10101d;
+$border-color: #e50914;
+$hover-background: #182448;
+$dropdown-background: #252540;
+$text-color: #ffffff;
+$button-background: #e50914;
+$button-hover: #d40812;
+
+// Afmetingen
 $padding-small: 10px;
-$padding-large: 20px;
-$font-large: 2.5rem;
-$font-small: 1.2rem;
+$padding-medium: 12px;
+$border-radius: 4px;
+$margin-small: 10px;
+$width-search-bar: 200px;
+$font-size-header-large: 2.5rem;
+$font-size-header-medium: 1.8rem;
+$font-size-header-small: 1.5rem;
+$font-size-header-xsmall: 1.2rem;
+$font-size-paragraph-large: 1.2rem;
+$font-size-paragraph-medium: 1rem;
+$font-size-paragraph-small: 0.9rem;
+$font-size-paragraph-xsmall: 0.8rem;
 
-// Functie om kleur donkerder te maken
-@function darken-color($color, $percent) {
-  @return darken($color, $percent);
+// Operators voor responsive aanpassingen
+$padding-responsive: $padding-small * 1.5;
+$margin-responsive: $margin-small * 2;
+$width-responsive: $width-search-bar / 2;
+
+// Mixins
+@mixin padding($padding) {
+  padding: $padding;
 }
 
-// Mixin voor media queries
-@mixin respond-to($breakpoint) {
-  @if $breakpoint == tablet {
-    @media (max-width: 768px) { @content; }
-  }
-  @else if $breakpoint == mobile {
-    @media (max-width: 480px) { @content; }
-  }
-  @else if $breakpoint == small-mobile {
-    @media (max-width: 270px) { @content; }
-  }
+@mixin margin($margin) {
+  margin: $margin;
 }
 
-// Algemene stijlen
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+// Algemene styling
 * {
   margin: 0;
   padding: 0;
@@ -39,20 +52,19 @@ body {
   overflow-x: hidden;
 }
 
-// App-container met variabelen en nesting
 .app-container {
   min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  background-color: $app-bg-color;
+  background-color: $background-dark;
   color: $text-color;
 
   .header {
     width: 100%;
-    padding: $padding-small;
-    background-color: $header-bg-color;
-    border-bottom: 2px solid $primary-color;
+    @include padding($padding-small);
+    background-color: $background-header;
+    border-bottom: 2px solid $border-color;
     position: relative;
     z-index: 1000;
 
@@ -62,182 +74,211 @@ body {
       align-items: center;
       width: 100%;
 
-      .nav-links {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        
-        // Zorg ervoor dat de items naast elkaar blijven staan
-        .nav-item {
-          margin: 0 $padding-small;
-          cursor: pointer;
-          padding: $padding-small $padding-large;
-          border-radius: 4px;
-          transition: background-color 0.3s;
-          
-          &:hover {
-            background-color: $hover-bg-color;
-          }
-
-          a {
-            color: $text-color;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            height: 100%;
-
-            &:hover {
-              color: $text-color;
-            }
-          }
-        }
-      }
-
-      .search-bar {
-        display: flex;
-        align-items: center;
-        margin-left: auto;
-
-        input {
-          padding: 0.8rem;
-          width: 200px;
-          border: none;
-          border-radius: 4px;
-          margin-right: 2rem;
-        }
-
-        button {
-          padding: 8px 16px;
-          background-color: $primary-color;
-          color: $text-color;
-          border: none;
-          border-radius: 4px;
-          margin-right: 1rem;
-          cursor: pointer;
-
-          &:hover {
-            background-color: darken-color($primary-color, 5%);
-          }
-        }
-      }
-
-      .hamburger-menu {
-        display: none;
-        font-size: 24px;
+      .nav-item {
+        position: relative;
+        @include margin(0 $margin-responsive);
         cursor: pointer;
-        color: $text-color;
+        @include padding($padding-small 20px);
+        border-radius: $border-radius;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: $hover-background;
+        }
       }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        @include margin(0);
+        @include padding(0);
+
+        a {
+          color: $text-color;
+          text-decoration: none;
+          display: block;
+          width: 100%;
+          height: 100%;
+
+          &:hover {
+            color: $text-color;
+          }
+        }
+      }
+    }
+
+    .hamburger-menu {
+      display: none;
+      @include font-size(1.5rem);
+      cursor: pointer;
+      color: $text-color;
     }
 
     .header-content {
       text-align: center;
-      margin-top: $padding-large;
+      @include margin(20px 0 0 0);
 
       h1 {
-        font-size: $font-large;
-        margin-bottom: $padding-small;
+        @include font-size($font-size-header-large);
+        @include margin(0 0 $padding-small 0);
       }
 
       p {
-        font-size: $font-small;
+        @include font-size($font-size-paragraph-large);
+      }
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $dropdown-background;
+    @include padding($padding-small);
+    list-style: none;
+    border-radius: 5px;
+
+    li {
+      @include padding(5px 0);
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    input {
+      @include padding(0.8rem);
+      width: $width-responsive; // Gebruik van operator voor responsive breedte
+      border: solid gray 1px;
+      border-radius: $border-radius;
+      margin-right: 2rem;
+    }
+
+    button {
+      @include padding(8px 16px);
+      background-color: $button-background;
+      color: $text-color;
+      border: none;
+      border-radius: $border-radius;
+      margin-right: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $button-hover;
       }
     }
   }
 }
 
-// Media queries met mixins
-@include respond-to(tablet) {
-  .search-bar {
-    margin-top: $padding-small;
-    width: 100%;
-    justify-content: space-between;
+@media (max-width: 768px) {
+  .app-container {
+    .header {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
 
-    input {
-      width: calc(100% - 100px);
-      margin-right: 0;
-    }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
 
-    button {
-      width: 100px;
-      margin-top: $padding-small;
-    }
-  }
+          &.show {
+            display: flex;
+          }
+        }
 
-  .header-content {
-    h1 {
-      font-size: 1.8rem;
-    }
+        .nav-item {
+          @include margin($margin-small 0);
+        }
+      }
 
-    p {
-      font-size: 1rem;
-    }
-  }
+      .search-bar {
+        @include margin($margin-small 0 0 0);
+        width: 100%;
+        justify-content: space-between;
 
-  .hamburger-menu {
-    display: block;
-  }
-}
+        input {
+          width: calc(100% - 100px);
+          margin-right: 0;
+        }
 
-@include respond-to(mobile) {
-  .navbar {
-    flex-direction: row;
-    align-items: center;
+        button {
+          width: 100px;
+          @include margin($margin-small 0 0 0);
+        }
+      }
 
-    .nav-links {
-      display: flex; 
-      flex-direction: row;
-      width: auto; 
-    }
+      .header-content {
+        h1 {
+          @include font-size($font-size-header-medium);
+        }
 
-    .nav-item {
-      margin: $padding-small;
-    }
-  }
+        p {
+          @include font-size($font-size-paragraph-medium);
+        }
+      }
 
-  .search-bar {
-    input {
-      width: 100%;
-      margin-top: $padding-small;
-    }
-
-    button {
-      width: 40%;
-      margin-top: $padding-small;
-      margin-left: 5px;
-    }
-  }
-
-  .header-content {
-    h1 {
-      font-size: 1.5rem;
-    }
-
-    p {
-      font-size: 0.9rem;
+      .hamburger-menu {
+        display: block;
+      }
     }
   }
 }
 
-@include respond-to(small-mobile) {
-  .header-content {
-    h1 {
-      font-size: 1.2rem;
-    }
+@media (max-width: 480px) {
+  .app-container {
+    .header {
+      .header-content {
+        h1 {
+          @include font-size($font-size-header-small);
+        }
 
-    p {
-      font-size: 0.8rem;
+        p {
+          @include font-size($font-size-paragraph-small);
+        }
+      }
+
+      .search-bar {
+        input {
+          width: 100%;
+          @include margin($margin-small 0 0 0);
+        }
+
+        button {
+          width: 40%;
+          @include margin($margin-small 0 0 5px);
+        }
+      }
     }
   }
+}
 
-  .search-bar {
-    input {
-      font-size: 0.8rem;
-    }
+@media (max-width: 270px) {
+  .app-container {
+    .header {
+      .header-content {
+        h1 {
+          @include font-size($font-size-header-xsmall);
+        }
 
-    button {
-      font-size: 0.8rem;
-      padding: 6px 12px;
+        p {
+          @include font-size($font-size-paragraph-xsmall);
+        }
+      }
+
+      .search-bar {
+        input {
+          @include font-size($font-size-paragraph-xsmall);
+        }
+
+        button {
+          @include font-size($font-size-paragraph-xsmall);
+          @include padding(6px 12px);
+        }
+      }
     }
   }
 }
