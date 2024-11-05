@@ -29,8 +29,9 @@ $star-margin-right: 5px;
 // Film posters grid-styling
 .film-posters {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 50%;
+  grid-template-columns: repeat(2, 1fr); // Aangepast voor twee posters naast elkaar
+  gap: 15px; // Extra ruimte tussen de posters
+  width: 100%; // Volledige breedte gebruiken
 
   .film-poster {
     cursor: pointer;
@@ -95,8 +96,8 @@ textarea {
 // Aanpassingen voor tablets
 @include respond-to(tablet) {
   .film-posters {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); // Zorgt voor twee posters naast elkaar
+    gap: 20px; // Ruimte tussen de posters
     margin-bottom: 30px;
   }
 
@@ -110,8 +111,8 @@ textarea {
 
   .film-poster {
     img {
-      width: 100%;
-      height: 100%;
+      width: 100%; // Zorgt ervoor dat de poster de beschikbare ruimte opvult
+      height: auto; // Behoudt de aspect ratio
       margin-left: 0;
       object-fit: cover;
       border-radius: $border-radius;

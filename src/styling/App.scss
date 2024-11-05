@@ -112,6 +112,7 @@ body {
       @include font-size(1.5rem);
       cursor: pointer;
       color: $text-color;
+      margin-left: auto;
     }
 
     .header-content {
@@ -151,7 +152,7 @@ body {
 
     input {
       @include padding(0.8rem);
-      width: $width-responsive; // Gebruik van operator voor responsive breedte
+      width: $width-responsive; 
       border: solid gray 1px;
       border-radius: $border-radius;
       margin-right: 2rem;
@@ -189,9 +190,14 @@ body {
             display: flex;
           }
         }
+        .hamburger-menu {
+          display: block; // Zorg ervoor dat het zichtbaar is op kleine schermen
+          margin-left: auto;
+        }
 
         .nav-item {
           @include margin($margin-small 0);
+          margin-right: auto;
         }
       }
 
