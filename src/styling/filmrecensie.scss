@@ -29,9 +29,8 @@ $star-margin-right: 5px;
 // Film posters grid-styling
 .film-posters {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // Aangepast voor twee posters naast elkaar
-  gap: 15px; // Extra ruimte tussen de posters
-  width: 100%; // Volledige breedte gebruiken
+  grid-template-columns: repeat(2, 1fr);
+  width: 50%;
 
   .film-poster {
     cursor: pointer;
@@ -86,7 +85,6 @@ textarea {
   max-height: 100px;
 }
 
-// Mixin voor media queries
 @mixin respond-to($breakpoint) {
   @if $breakpoint == tablet {
     @media (max-width: 768px) { @content; }
@@ -96,17 +94,10 @@ textarea {
 // Aanpassingen voor tablets
 @include respond-to(tablet) {
   .film-posters {
-    grid-template-columns: repeat(2, 1fr); // Zorgt voor twee posters naast elkaar
+    grid-template-columns: repeat(2, 1fr); // Eén poster per rij op mobiel
+    width: 100%; // Zorgt ervoor dat de film-posters de volledige breedte innemen
     gap: 20px; // Ruimte tussen de posters
     margin-bottom: 30px;
-  }
-
-  .recensie-container {
-    flex-direction: column;
-  }
-
-  .review-section {
-    width: 100%;
   }
 
   .film-poster {
@@ -117,5 +108,13 @@ textarea {
       object-fit: cover;
       border-radius: $border-radius;
     }
+  }
+
+  .recensie-container {
+    flex-direction: column;
+  }
+
+  .review-section {
+    width: 100%;
   }
 }

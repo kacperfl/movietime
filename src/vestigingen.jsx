@@ -4,42 +4,41 @@ import './styling/vestigingen.scss';
 function Vestigingen() {
   const vestigingen = [
     {
-      naam: "Bioscoop Amsterdam",
-      adres: "Kalverstraat 1, 1012 NX Amsterdam",
-      telefoon: "020 123 4567",
-      email: "amsterdam@bioscoop.nl",
+      naam: "MovieTime Amsterdam",
+      adres: "Kalverstraat 1, 1011 AA Amsterdam",
+      telefoon: "020 1234123",
+      email: "amsterdam@movietime.nl",
     },
     {
-      naam: "Bioscoop Rotterdam",
-      adres: "Coolsingel 50, 3011 AD Rotterdam",
-      telefoon: "010 765 4321",
-      email: "rotterdam@bioscoop.nl",
+      naam: "MovieTime Amstelveen",
+      adres: "Stadsplein 2, 1122 BB Amstelveen",
+      telefoon: "020 4321321",
+      email: "amstelveen@movietime.nl",
     },
     {
-      naam: "Bioscoop Utrecht",
-      adres: "Vredenburg 90, 3511 BD Utrecht",
-      telefoon: "030 987 6543",
-      email: "utrecht@bioscoop.nl",
+      naam: "MovieTime Haarlem",
+      adres: "Zijlstraat 3, 2033 CC Haarlem",
+      telefoon: "023 7654321",
+      email: "haarlem@movietime.nl",
     },
     {
-      naam: "Bioscoop Den Haag",
-      adres: "Spui 10, 2511 BS Den Haag",
-      telefoon: "070 112 3344",
-      email: "denhaag@bioscoop.nl",
+      naam: "MovieTime Utrecht",
+      adres: "Neude 4, 3544 DD Utrecht",
+      telefoon: "030 8877665",
+      email: "utrecht@movietime.nl",
     },
     {
-      naam: "Bioscoop Eindhoven",
-      adres: "Markt 8, 5611 EB Eindhoven",
-      telefoon: "040 224 6688",
-      email: "eindhoven@bioscoop.nl",
+      naam: "MovieTime Groningen",
+      adres: "Heerenstraat 5, 3544 DD Groningen",
+      telefoon: "050 8877665",
+      email: "groningen@movietime.nl",
     },
     {
-      naam: "Bioscoop Groningen",
-      adres: "Grote Markt 30, 9711 LP Groningen",
-      telefoon: "050 887 7766",
-      
-      email: "groningen@bioscoop.nl",
-    }
+      naam: "MovieTime Maastricht",
+      adres: "Vrijthof 6, 3544 DD Maastricht",
+      telefoon: "043 8877665",
+      email: "maastricht@movietime.nl",
+    },
   ];
 
   return (
