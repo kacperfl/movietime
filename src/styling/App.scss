@@ -54,44 +54,52 @@ body {
 
 .app-container {
   min-height: 100vh;
-  width: 100vw; // Dit is goed, maar controleer de sub-elementen
-  max-width: 100%; // Dit helpt te voorkomen dat er over de viewport heen wordt gegaan
+  width: 100vw; 
+  max-width: 100%; 
   display: flex;
   flex-direction: column;
   background-color: $background-dark;
-  color: $text-color;
 
   .header {
     width: 100%;
-    max-width: 100%; // Voorkom dat de header breder wordt
+    max-width: 100%; 
     @include padding($padding-small);
     background-color: $background-header;
     border-bottom: 2px solid $border-color;
     position: relative;
     z-index: 1000;
+    .nav-link {
+      display: flex;
+      align-items: center; 
+      justify-content: center; 
+      width: 100%; 
+      height: 100%; 
+    }
+  
 
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      flex-wrap: wrap; // Zorg ervoor dat elementen zich aanpassen aan kleinere schermen
+      flex-wrap: wrap; 
 
       .nav-item {
-        flex: 1; // Dit zorgt ervoor dat nav-items goed schalen
+        flex: 1; 
         @include margin(0 $margin-responsive);
         cursor: pointer;
         @include padding($padding-small 20px);
         border-radius: $border-radius;
         transition: background-color 0.3s;
-        // width: 6rem;
+       
 
         &:hover {
           background-color: $hover-background;
         }
       }
 
-
+    
+    
       .nav-links {
         list-style: none;
         justify-content: center;
@@ -102,17 +110,22 @@ body {
         a {
           color: $text-color;
           text-decoration: none;
-          display: block;
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
           text-align: center;
           width: 100%;
           height: 100%;
-
+        
           &:hover {
             color: $text-color;
           }
         }
+        
       }
+      
     }
+    
 
     .hamburger-menu {
       display: none;
@@ -153,9 +166,9 @@ body {
   }
 
   .logo {
-    width: 80px; // Pas de grootte aan naar wens
-    height: auto; // Houd de verhouding van het logo
-    margin-right: 30px; // Spatie tussen het logo en de nav-links
+    width: 80px; 
+    height: auto;
+    margin-right: 30px; 
     border-radius: 0.4rem;
   }
 
@@ -189,7 +202,7 @@ body {
   }
 }
 
-// Eén enkele media query voor kleinere schermen (max-width: 768px)
+// Een  media query voor kleinere schermen max-width: 768px
 @media (max-width: 768px) {
   .app-container {
     .header {
@@ -204,6 +217,8 @@ body {
         .logo {
           margin: 0 auto;
           transform: none;
+          width: 70px; 
+          height: auto;
         }
 
         .hamburger-menu {

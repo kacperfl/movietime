@@ -8,10 +8,9 @@ const Recensie = () => {
   const [beoordeling, setBeoordeling] = useState(0);
   const [recensies, setRecensies] = useState([]);
   const [films, setFilms] = useState([]);
+  const [showDiscount, setShowDiscount] = useState(false);
   const reviewRef = useRef(null);
 
-  //3. de fotos zijn gecompresseerd waardoor ze minder qua grootte hebben en sneller inladen
-  // 3. de foto formaat is geoptimaliseerd
   const defaultFilms = [
     { id: 1, foto: 'src/photos/ATLAS-KEYART.jpg', title: 'Atlas' },
     { id: 2, foto: 'src/photos/JokerFolieC3A0Deux_133650099276711151_big.jpg', title: 'Joker Folie Deux' },
@@ -25,13 +24,10 @@ const Recensie = () => {
     { id: 10, foto: 'src/photos/MV5BYzZkOGUwMzMtMTgyNS00YjFlLTg5NzYtZTE3Y2E5YTA5NWIyXkEyXkFqcGdeQXVyMjkwOTAyMDU._V1_.jpg', title: 'Black Adam' },
   ];
 
-  // 5. Laad recensies en films uit localStorage wanneer de pagina geladen wordt
   useEffect(() => {
     const storedRecensies = JSON.parse(localStorage.getItem('recensies')) || [];
     setRecensies(storedRecensies);
 
-    // 5. Films cachen in localStorage
-    // 3. kortere functies
     const storedFilms = JSON.parse(localStorage.getItem('films'));
     if (storedFilms) {
       setFilms(storedFilms);
@@ -61,7 +57,7 @@ const Recensie = () => {
     localStorage.setItem('recensies', JSON.stringify(updatedRecensies));
 
     if (updatedRecensies.length === 3) {
-      alert('Bedankt voor jou reviews als een bedankje: 10% korting! gebruik de code: SuperUser1010');
+      setShowDiscount(true);
     }
 
     setRecensie('');
@@ -73,8 +69,6 @@ const Recensie = () => {
       <article className="film-posters">
         {films.map((film) => (
           <div key={film.id} className="film-poster" onClick={() => handleFilmClick(film)}>
-            {/* 7.alt toegevoegt bij elke dyamiche foto zodat zoekmachine weet wat voor soort foto het is */}
-            {/* 8. Gebruik gemaakt van lazy loading waardoor alleen de nodige fotos gerenderd worden. */}
             <img src={film.foto} alt={`Poster van ${film.title}`} loading="lazy" />
           </div>
         ))}
@@ -126,6 +120,11 @@ const Recensie = () => {
               <p>{item.recensie}</p>
             </div>
           ))}
+          {showDiscount && (
+            <div className="korting-melding">
+              <p>Bedankt voor je reviews! Als bedankje: <strong>10% korting</strong>! Gebruik de code: <code>Movietime10</code></p>
+            </div>
+          )}
         </div>
       </article>
     </section>
