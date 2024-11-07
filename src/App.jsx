@@ -19,26 +19,25 @@ function App() {
             {/* Logo */}
             <img src="src/photos/istockphoto-1642381175-612x612.jpg" alt="Logo" className="logo" />
 
-            {/* Hamburger menuu */}
+            {/* Hamburger menu */}
             <div className="hamburger-menu" onClick={toggleMenu}>
               <i className="fas fa-bars"></i>
             </div>
 
             <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
               <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link" onClick={toggleMenu}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/recensies" className="nav-link">Film recensie</Link>
+                <Link to="/recensies" className="nav-link" onClick={toggleMenu}>Film recensie</Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">Nieuwe Films</Link>
+                <Link to="/" className="nav-link" onClick={toggleMenu}>Nieuwe Films</Link>
               </li>
               <li className="nav-item">
-                <Link to="/vestigingen" className="nav-link">Vestigingen</Link>
+                <Link to="/vestigingen" className="nav-link" onClick={toggleMenu}>Vestigingen</Link>
               </li>
             </ul>
-
 
             <div className="search-bar">
               <input
@@ -63,16 +62,29 @@ function App() {
             </div>
           </div>
         </header>
+
         <main>
           <Routes>
             <Route path="/vestigingen" element={<Vestigingen />} />
             <Route path="/recensies" element={<FilmRecensie />} />
           </Routes>
         </main>
+
+        {/* Footer */}
+        <footer className="footer">
+          <div className="footer-content">
+            <p>&copy; 2024 MovieTime </p>
+
+            {/* placeholder not functional maybe later... */}
+            <div className="footer-links">
+              <Link to="/privacy">Privacybeleid</Link>
+              <Link to="/terms">Gebruiksvoorwaarden</Link>
+            </div>
+          </div>
+        </footer>
       </div>
     </Router>
   );
 }
-
 
 export default App;
