@@ -51,6 +51,9 @@ $width-responsive: $width-search-bar / 2;
 body {
   overflow-x: hidden;
 }
+main {
+  flex-grow: 1; 
+}
 
 .app-container {
   min-height: 100vh;
@@ -59,6 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: $background-dark;
+  min-height: 100vh;
 
   .header {
     width: 100%;
@@ -67,7 +71,9 @@ body {
     background-color: $background-header;
     border-bottom: 2px solid $border-color;
     position: relative;
+    flex-shrink: 0;
     z-index: 1000;
+
     .nav-link {
       display: flex;
       align-items: center; 
@@ -85,16 +91,27 @@ body {
       flex-wrap: wrap; 
 
       .nav-item {
-        flex: 1; 
+        // Stijlen voor desktop van nav links in de header
         @include margin(0 $margin-responsive);
         cursor: pointer;
         @include padding($padding-small 20px);
         border-radius: $border-radius;
         transition: background-color 0.3s;
-       
-
+      
         &:hover {
           background-color: $hover-background;
+        }
+      
+        // Media query voor mobiel voor de links binnen de nav links
+        @media (max-width: 768px) {
+          padding: 2rem 0;
+          text-align: center;
+          color: $text-color;
+          font-size: 1.2rem;
+      
+          &:hover {
+            color: $button-background;
+          }
         }
       }
 
@@ -125,7 +142,23 @@ body {
       }
       
     }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.5); 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 999; 
+      pointer-events: none; 
     
+      &.show {
+        opacity: 1;
+        pointer-events: all; 
+      }
+    }
 
     .hamburger-menu {
       display: none;
@@ -201,6 +234,37 @@ body {
     }
   }
 }
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
 
 // Een  media query voor kleinere schermen max-width: 768px
 @media (max-width: 768px) {
@@ -229,16 +293,25 @@ body {
         }
 
         .nav-links {
-          display: none;
+          list-style: none;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 250px; // Bepaalt de breedte van het menu
+          background-color: $background-header;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+          display: flex;
           flex-direction: column;
           align-items: center;
-          width: 100%;
-
+          padding-top: 2rem;
+        
           &.show {
-            display: flex;
+            transform: translateX(0); // Schuift het menu naar binnen
           }
-        }
       }
+    }
 
       .search-bar {
         @include margin($margin-small 0 0 0);
