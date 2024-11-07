@@ -19,26 +19,27 @@ function App() {
             {/* Logo */}
             <img src="src/photos/istockphoto-1642381175-612x612.jpg" alt="Logo" className="logo" />
 
-            {/* Hamburger menu */}
+            {/* Hamburger menuu */}
             <div className="hamburger-menu" onClick={toggleMenu}>
               <i className="fas fa-bars"></i>
             </div>
 
             <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
               <li className="nav-item">
-                <Link to="/">Home</Link>
+                <Link to="/" className="nav-link">Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/recensies">Film recensie</Link>
+                <Link to="/recensies" className="nav-link">Film recensie</Link>
               </li>
               <li className="nav-item">
-                <Link to="/">Nieuwe Films</Link>
+                <Link to="/" className="nav-link">Nieuwe Films</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-text" to="/vestigingen">Vestigingen</Link>
+                <Link to="/vestigingen" className="nav-link">Vestigingen</Link>
               </li>
             </ul>
-            
+
+
             <div className="search-bar">
               <input
                 list="film-titles"

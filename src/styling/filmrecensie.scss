@@ -78,7 +78,23 @@ $star-margin-right: 5px;
 .recensie-item {
   margin-bottom: scale($padding, 1);
 }
+.korting-melding {
+  background-color: #f8d7da;
+  padding: $padding;
+  border-radius: $border-radius;
+  margin-top: $padding;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  font-weight: bold;
+  text-align: center;
 
+  code {
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+}
 // Tekstveld-styling
 textarea {
   width: 100%;
