@@ -1,7 +1,7 @@
 {
   "name": "movietime",
   "private": true,
-  "homepage": "https://gitname.github.io/react-gh-pages",
+  "homepage": "https://gitname.github.io/movietime",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
